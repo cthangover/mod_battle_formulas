@@ -19,7 +19,7 @@ Trong menu chiến đấu của FF, thẻ hiển thị công thức, còn dòng 
 
 ![Menu hành động của anh hùng với Power strike đang chọn; thẻ hiển thị Target enemy, 1 AP và công thức a.atk * 1.5 + rand(0, a.str / 2), kèm mô tả "Vung trọn đòn: một lần rưỡi sát thương và thêm một chút từ sức mạnh".](assets/formula-menu.jpg)
 
-Chiến binh RPG Plus có sát thương 12 và sức mạnh 9, nên đòn này gây 12 × 1.5 = 18 cộng một giá trị ngẫu nhiên từ 0 đến 4.5. Trong trận được chụp lại ở đây nó gây 22:
+Chiến binh RPG Plus có tấn công 12, sức mạnh 9. Ở đây `rand(0, a.str / 2)` trả về số nguyên từ 0 đến 4, nên sát thương trước khiên là 18–22. Trận được chụp gây 22:
 
 ![Nhật ký chiến đấu: Hero: Power strike → Wolf; Wolf's shield absorbed 2 · left 0; Power strike: Hero → Wolf · -20 HP; rồi đến Defence của sói, +4 DEF (tổng 4).](assets/formula-log.jpg)
 

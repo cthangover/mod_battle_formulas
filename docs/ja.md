@@ -19,7 +19,7 @@ FF のバトルメニューではカードに式が表示され、ヒントに�
 
 ![Power strike を選んだ英雄のアクションメニュー。カードには Target enemy、1 AP、式 a.atk * 1.5 + rand(0, a.str / 2)、そして説明「渾身の一撃：攻撃の1.5倍に力の値を少し上乗せ」。](assets/formula-menu.jpg)
 
-RPG Plus の戦士は攻撃 12・力 9 なので、この一撃は 12 × 1.5 = 18 に 0〜4.5 の乱数を加えた値になります。ここで記録した戦闘では 22 を出しました：
+RPG Plus の戦士は攻撃 12、力 9 です。ここで `rand(0, a.str / 2)` は 0〜4 の整数を返すため、シールド適用前のダメージは 18〜22 です。撮影した戦闘では 22 でした：
 
 ![戦闘ログ：Hero: Power strike → Wolf／Wolf's shield absorbed 2 · left 0／Power strike: Hero → Wolf · -20 HP／続いて狼の Defence、+4 DEF（合計 4）。](assets/formula-log.jpg)
 

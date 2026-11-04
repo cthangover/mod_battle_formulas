@@ -19,7 +19,7 @@ Classic RPG Rules 的 Power strike：
 
 ![英雄的动作菜单，已选中 Power strike；卡牌显示 Target enemy、1 AP 和公式 a.atk * 1.5 + rand(0, a.str / 2)，并附描述「全力一击：1.5 倍攻击，再加一点力量加成」。](assets/formula-menu.jpg)
 
-RPG Plus 的战士攻击为 12、力量为 9，因此这一击造成 12 × 1.5 = 18，再加 0 到 4.5 的随机值。在截图的这场战斗中它打出了 22：
+RPG Plus 战士的攻击为 12，力量为 9。此处 `rand(0, a.str / 2)` 返回 0 到 4（含端点）的整数，所以护盾吸收前的伤害为 18–22。截图中造成了 22：
 
 ![战斗日志：Hero: Power strike → Wolf；Wolf's shield absorbed 2 · left 0；Power strike: Hero → Wolf · -20 HP；随后是狼的 Defence，+4 DEF（共 4）。](assets/formula-log.jpg)
 

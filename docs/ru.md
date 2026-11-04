@@ -19,7 +19,7 @@ Power strike из Classic RPG Rules:
 
 ![Меню действий героя с выбранным Power strike; на карте — Target enemy, 1 AP и Formula a.atk * 1.5 + rand(0, a.str / 2), а также описание «Полный замах: полторы атаки и ещё немного от силы».](assets/formula-menu.jpg)
 
-У воина из RPG Plus атака 12 и сила 9, поэтому удар наносит 12 × 1.5 = 18 плюс случайное от 0 до 4.5. В записанном здесь бою выпало 22:
+У воина из RPG Plus атака 12 и сила 9. Здесь `rand(0, a.str / 2)` возвращает целое от 0 до 4 включительно, поэтому удар наносит 18–22 до поглощения щитом. В записанном здесь бою выпало 22:
 
 ![Журнал боя: Hero: Power strike → Wolf; Wolf's shield absorbed 2 · left 0; Power strike: Hero → Wolf · -20 HP; затем Defence волка, +4 DEF (всего 4).](assets/formula-log.jpg)
 
