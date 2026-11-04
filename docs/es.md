@@ -19,7 +19,7 @@ En el menú de combate de FF la carta muestra la fórmula, y la pista es la desc
 
 ![El menú de acciones del héroe con Power strike seleccionado; su carta muestra Target enemy, 1 AP y Formula a.atk * 1.5 + rand(0, a.str / 2), junto con la descripción «Un golpe completo: ataque y medio, y un poco más por fuerza».](assets/formula-menu.jpg)
 
-El guerrero de RPG Plus tiene ataque 12 y fuerza 9, así que el golpe hace 12 × 1.5 = 18 más un aleatorio de 0 a 4.5. En el combate capturado aquí hizo 22:
+El guerrero de RPG Plus tiene ataque 12 y fuerza 9. Aquí `rand(0, a.str / 2)` devuelve un entero entre 0 y 4 inclusive: el golpe causa 18–22 antes del escudo. En la captura causó 22:
 
 ![El registro de combate: Hero: Power strike → Wolf; Wolf's shield absorbed 2 · left 0; Power strike: Hero → Wolf · -20 HP; después la Defence del lobo, +4 DEF (total 4).](assets/formula-log.jpg)
 

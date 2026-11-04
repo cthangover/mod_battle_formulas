@@ -19,7 +19,7 @@ In the FF battle menu the card shows the formula, and the hint is the skill's de
 
 ![The Hero's actions menu with Power strike selected; its card shows Target enemy, 1 AP and Formula a.atk * 1.5 + rand(0, a.str / 2), with the description "A full swing: one and a half times the attack and a bit more from strength."](assets/formula-menu.jpg)
 
-The RPG Plus warrior has attack 12 and strength 9, so the strike does 12 × 1.5 = 18 plus a random 0 to 4.5. In the battle captured here it did 22:
+The RPG Plus warrior has attack 12 and strength 9. `rand(0, a.str / 2)` returns an integer from 0 through 4 here, so the strike does 18–22 before shields. In the battle captured here it did 22:
 
 ![The battle log: Hero: Power strike → Wolf; Wolf's shield absorbed 2 · left 0; Power strike: Hero → Wolf · -20 HP; then the wolf's Defence, +4 DEF (total 4).](assets/formula-log.jpg)
 

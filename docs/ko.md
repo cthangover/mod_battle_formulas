@@ -19,7 +19,7 @@ FF 전투 메뉴에서는 카드에 공식이 보이고, 힌트 자리에는 스
 
 ![Power strike를 선택한 영웅의 행동 메뉴. 카드에는 Target enemy, 1 AP, 공식 a.atk * 1.5 + rand(0, a.str / 2)와 설명 "전력으로 휘두르는 일격: 공격의 1.5배에 힘에서 조금 더"가 보입니다.](assets/formula-menu.jpg)
 
-RPG Plus의 전사는 공격 12, 힘 9이므로 이 일격은 12 × 1.5 = 18에 0에서 4.5 사이의 무작위 값을 더합니다. 여기에 담긴 전투에서는 22가 나왔습니다:
+RPG Plus 전사의 공격은 12, 힘은 9입니다. 여기서 `rand(0, a.str / 2)`는 0부터 4까지의 정수를 반환하므로 보호막 적용 전 피해는 18–22입니다. 촬영한 전투에서는 22였습니다:
 
 ![전투 로그: Hero: Power strike → Wolf; Wolf's shield absorbed 2 · left 0; Power strike: Hero → Wolf · -20 HP; 이어서 늑대의 Defence, +4 DEF(총 4).](assets/formula-log.jpg)
 
