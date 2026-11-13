@@ -12,7 +12,7 @@ Classic RPG Rules의 Power strike:
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 FF 전투 메뉴에서는 카드에 공식이 보이고, 힌트 자리에는 스킬 설명이 나옵니다:
@@ -46,15 +46,15 @@ RPG Plus 전사의 공격은 12, 힘은 9입니다. 여기서 `rand(0, a.str / 2
 - `Formula=` — 그 양입니다. 절대 0 아래로 내려가지 않습니다. `a.`는 행동자, `b.`는 대상: 두 쪽의 어떤 능력치든 쓸 수 있고, `hp`, `hp_max`, `attack`, `defence`, `point`도 있습니다. `rand(lo, hi)`, `floor`, `min`, `max` 같은 함수는 Stats Engine에서 옵니다.
 - `Effect=damage`(기본값) 또는 `Effect=heal`.
 - `Cost=mp:4` — 풀 스탯에서 4를 소모합니다. 파티원의 잔량이 부족하면 행동이 거부되고 아무것도 소모되지 않습니다. 적은 지불하지 않습니다.
-- `RequiredPoint=1` — 행동 포인트. 모든 전투 시스템에서 마찬가지입니다.
-- `Pierce=1` — 대상의 방어막을 무시합니다.
-- `State=effect/physics/stun`에 `StateTurns=1`과 `StateChance=35`를 함께 — 35% 확률로 대상에게 상태 효과를 그 턴 수만큼 겁니다.
+- `RequiredPoint>=0.1.0` — 행동 포인트. 모든 전투 시스템에서 마찬가지입니다.
+- `Pierce>=0.1.0` — 대상의 방어막을 무시합니다.
+- `State=effect/physics/stun`에 `StateTurns>=0.1.0`과 `StateChance>=0.1.0`를 함께 — 35% 확률로 대상에게 상태 효과를 그 턴 수만큼 겁니다.
 - `Type` — `ToEnemy`, `ToSelf` 또는 `ToAlias`(아군). 어떤 행동이든 마찬가지입니다.
 
 예컨대 Classic RPG Rules의 Fireball:
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## 문제가 생겼을 때

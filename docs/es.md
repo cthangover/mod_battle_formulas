@@ -12,7 +12,7 @@ El Power strike de Classic RPG Rules:
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 En el menú de combate de FF la carta muestra la fórmula, y la pista es la descripción de la habilidad:
@@ -46,15 +46,15 @@ Una entidad de acción (tipo `action`, véase Characters Engine) con un valor `F
 - `Formula=` — la cantidad; nunca por debajo de 0. `a.` es quien actúa, `b.` el objetivo: cualquiera de sus estadísticas, y además `hp`, `hp_max`, `attack`, `defence`, `point`. Funciones como `rand(lo, hi)`, `floor`, `min`, `max` vienen de Stats Engine.
 - `Effect=damage` (lo predeterminado) o `Effect=heal`.
 - `Cost=mp:4` — gasta 4 de una estadística de reserva; si a un miembro del grupo no le llega, la acción se rechaza y no se gasta nada. Los enemigos no pagan nada.
-- `RequiredPoint=1` — puntos de acción, como en todo sistema de combate.
-- `Pierce=1` — ignora el escudo del objetivo.
-- `State=effect/physics/stun` con `StateTurns=1` y `StateChance=35` — un 35% de probabilidad de aplicar un efecto de estado al objetivo durante esos turnos.
+- `RequiredPoint>=0.1.0` — puntos de acción, como en todo sistema de combate.
+- `Pierce>=0.1.0` — ignora el escudo del objetivo.
+- `State=effect/physics/stun` con `StateTurns>=0.1.0` y `StateChance>=0.1.0` — un 35% de probabilidad de aplicar un efecto de estado al objetivo durante esos turnos.
 - `Type` — `ToEnemy`, `ToSelf` o `ToAlias` (un aliado), como en cualquier acción.
 
 El Fireball de Classic RPG Rules, por ejemplo:
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## Si algo sale mal

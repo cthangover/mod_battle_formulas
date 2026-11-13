@@ -12,7 +12,7 @@ Classic RPG Rules 的 Power strike：
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 在 FF 战斗菜单里，卡牌上会显示公式，提示行则是技能的描述：
@@ -46,15 +46,15 @@ RPG Plus 战士的攻击为 12，力量为 9。此处 `rand(0, a.str / 2)` 返�
 - `Formula=`——数值大小；永不低于 0。`a.` 是行动者，`b.` 是目标：可用它们任意属性，也有 `hp`、`hp_max`、`attack`、`defence`、`point`。`rand(lo, hi)`、`floor`、`min`、`max` 等函数来自 Stats Engine。
 - `Effect=damage`（默认）或 `Effect=heal`。
 - `Cost=mp:4`——从某项资源属性中扣除 4；队友的存量不足时动作会被拒绝，什么也不消耗。敌人无需支付。
-- `RequiredPoint=1`——行动点，与所有战斗系统一致。
-- `Pierce=1`——无视目标的护盾。
-- `State=effect/physics/stun` 配合 `StateTurns=1` 和 `StateChance=35`——以 35% 几率给目标施加状态效果，持续相应回合数。
+- `RequiredPoint>=0.1.0`——行动点，与所有战斗系统一致。
+- `Pierce>=0.1.0`——无视目标的护盾。
+- `State=effect/physics/stun` 配合 `StateTurns>=0.1.0` 和 `StateChance>=0.1.0`——以 35% 几率给目标施加状态效果，持续相应回合数。
 - `Type`——`ToEnemy`、`ToSelf` 或 `ToAlias`（队友），与所有动作一致。
 
 例如 Classic RPG Rules 的 Fireball：
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## 出问题怎么办

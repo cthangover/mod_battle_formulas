@@ -12,7 +12,7 @@ Power strike from Classic RPG Rules:
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 In the FF battle menu the card shows the formula, and the hint is the skill's description:
@@ -46,15 +46,15 @@ An action entity (kind `action`, see Characters Engine) with a `Formula=` value:
 - `Formula=` — the amount; never below 0. `a.` is the one acting, `b.` the target: any of their stats, and also `hp`, `hp_max`, `attack`, `defence`, `point`. Functions such as `rand(lo, hi)`, `floor`, `min`, `max` come from Stats Engine.
 - `Effect=damage` (the default) or `Effect=heal`.
 - `Cost=mp:4` — spends 4 of a pool stat; when a party member has too little, the action is refused and nothing is spent. Enemies pay nothing.
-- `RequiredPoint=1` — action points, as in every battle system.
-- `Pierce=1` — ignores the target's shield.
-- `State=effect/physics/stun` with `StateTurns=1` and `StateChance=35` — a 35% chance to put a status effect on the target for that many turns.
+- `RequiredPoint>=0.1.0` — action points, as in every battle system.
+- `Pierce>=0.1.0` — ignores the target's shield.
+- `State=effect/physics/stun` with `StateTurns>=0.1.0` and `StateChance>=0.1.0` — a 35% chance to put a status effect on the target for that many turns.
 - `Type` — `ToEnemy`, `ToSelf` or `ToAlias` (an ally), as for any action.
 
 Classic RPG Rules' Fireball, for example:
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## If something goes wrong

@@ -12,7 +12,7 @@ Classic RPG Rules の Power strike：
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 FF のバトルメニューではカードに式が表示され、ヒントにはスキルの説明が出ます：
@@ -46,15 +46,15 @@ RPG Plus の戦士は攻撃 12、力 9 です。ここで `rand(0, a.str / 2)` �
 - `Formula=`——量。決して 0 未満にはなりません。`a.` は行動者、`b.` は対象：両者の任意のステータスに加え、`hp`、`hp_max`、`attack`、`defence`、`point` が使えます。`rand(lo, hi)`、`floor`、`min`、`max` などの関数は Stats Engine 由来です。
 - `Effect=damage`（既定）または `Effect=heal`。
 - `Cost=mp:4`——プール型ステータスから 4 消費します。パーティメンバーが足りなければ行動は拒否され、何も消費されません。敵は支払い不要です。
-- `RequiredPoint=1`——行動ポイント。どのバトルシステムでも同じです。
-- `Pierce=1`——対象のシールドを無視します。
-- `State=effect/physics/stun` に `StateTurns=1` と `StateChance=35` を合わせると——35% の確率で対象に状態異常をそのターン数の間与えます。
+- `RequiredPoint>=0.1.0`——行動ポイント。どのバトルシステムでも同じです。
+- `Pierce>=0.1.0`——対象のシールドを無視します。
+- `State=effect/physics/stun` に `StateTurns>=0.1.0` と `StateChance>=0.1.0` を合わせると——35% の確率で対象に状態異常をそのターン数の間与えます。
 - `Type`——`ToEnemy`、`ToSelf`、`ToAlias`（味方）。どのアクションでも同じです。
 
 たとえば Classic RPG Rules の Fireball：
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## うまくいかないときは
