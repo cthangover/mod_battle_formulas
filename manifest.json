@@ -1,7 +1,7 @@
 {
   "id": "battle_formulas",
   "name": "Battle Formulas",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "ct",
   "description": "Battle skills written as data: damage and heal formulas over the participants' stats, resource costs, pierce and stun — no code, and the same skill works in every battle core.",
   "category": "gameplay",
@@ -11,5 +11,5 @@
   "test_sources": [
     "tests/*.cs"
   ],
-  "depends": ["stats_base>=1", "turn_battle_base>=2", "characters_base>=1"]
+  "depends": ["stats_base>=0.1.0", "turn_battle_base>=0.1.0", "characters_base>=0.1.0"]
 }

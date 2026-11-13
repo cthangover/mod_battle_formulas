@@ -12,7 +12,7 @@ Power strike из Classic RPG Rules:
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 В меню боя FF на карте видно формулу, а подсказкой служит описание навыка:
@@ -46,15 +46,15 @@ Power strike из Classic RPG Rules:
 - `Formula=` — величина; никогда не меньше 0. `a.` — действующий, `b.` — цель: любые их характеристики, а также `hp`, `hp_max`, `attack`, `defence`, `point`. Функции вроде `rand(lo, hi)`, `floor`, `min`, `max` приходят из Stats Engine.
 - `Effect=damage` (по умолчанию) или `Effect=heal`.
 - `Cost=mp:4` — тратит 4 из характеристики-запаса; если члену отряда её не хватает, действие отклоняется и ничего не тратится. Враги не платят ничего.
-- `RequiredPoint=1` — очки действий, как в любой боевой системе.
-- `Pierce=1` — игнорирует щит цели.
-- `State=effect/physics/stun` вместе с `StateTurns=1` и `StateChance=35` — с шансом 35% вешает на цель статусный эффект на столько ходов.
+- `RequiredPoint>=0.1.0` — очки действий, как в любой боевой системе.
+- `Pierce>=0.1.0` — игнорирует щит цели.
+- `State=effect/physics/stun` вместе с `StateTurns>=0.1.0` и `StateChance>=0.1.0` — с шансом 35% вешает на цель статусный эффект на столько ходов.
 - `Type` — `ToEnemy`, `ToSelf` или `ToAlias` (союзник), как у любого действия.
 
 Например, Fireball из Classic RPG Rules:
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## Если что-то пошло не так

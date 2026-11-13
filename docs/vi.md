@@ -12,7 +12,7 @@ Power strike của Classic RPG Rules:
 
 ```json
 { "Id": "classic/power_strike", "Type": "ToEnemy",
-  "Values": [ "RequiredPoint=1", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
+  "Values": [ "RequiredPoint>=0.1.0", "Formula=a.atk * 1.5 + rand(0, a.str / 2)" ] }
 ```
 
 Trong menu chiến đấu của FF, thẻ hiển thị công thức, còn dòng gợi ý chính là mô tả của kỹ năng:
@@ -46,15 +46,15 @@ Một thực thể hành động (loại `action`, xem Characters Engine) mang g
 - `Formula=` — lượng tác động; không bao giờ nhỏ hơn 0. `a.` là người hành động, `b.` là mục tiêu: có thể dùng bất kỳ chỉ số nào của họ, cùng `hp`, `hp_max`, `attack`, `defence`, `point`. Các hàm như `rand(lo, hi)`, `floor`, `min`, `max` đến từ Stats Engine.
 - `Effect=damage` (mặc định) hoặc `Effect=heal`.
 - `Cost=mp:4` — trừ 4 điểm từ một chỉ số dạng nguồn; nếu thành viên đội không đủ, hành động bị từ chối và không tốn gì. Kẻ địch không phải trả giá.
-- `RequiredPoint=1` — điểm hành động, như ở mọi hệ thống chiến đấu.
-- `Pierce=1` — bỏ qua lớp khiên của mục tiêu.
-- `State=effect/physics/stun` cùng `StateTurns=1` và `StateChance=35` — 35% cơ hội tròng lên mục tiêu một hiệu ứng trạng thái đúng số lượt đó.
+- `RequiredPoint>=0.1.0` — điểm hành động, như ở mọi hệ thống chiến đấu.
+- `Pierce>=0.1.0` — bỏ qua lớp khiên của mục tiêu.
+- `State=effect/physics/stun` cùng `StateTurns>=0.1.0` và `StateChance>=0.1.0` — 35% cơ hội tròng lên mục tiêu một hiệu ứng trạng thái đúng số lượt đó.
 - `Type` — `ToEnemy`, `ToSelf` hoặc `ToAlias` (đồng đội), như mọi hành động khác.
 
 Lấy Fireball của Classic RPG Rules làm ví dụ:
 
 ```json
-"Values": [ "RequiredPoint=1", "Cost=mp:4", "Pierce=1", "Formula=a.mag * 2 + rand(1, 6)" ]
+"Values": [ "RequiredPoint>=0.1.0", "Cost=mp:4", "Pierce>=0.1.0", "Formula=a.mag * 2 + rand(1, 6)" ]
 ```
 
 ## Khi có sự cố
