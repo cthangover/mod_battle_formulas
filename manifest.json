@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "ct",
   "description": "Battle skills written as data: damage and heal formulas over the participants' stats, resource costs, pierce and stun — no code, and the same skill works in every battle core.",
-  "category": "gameplay",
+  "categories": ["gameplay"],
   "sources": [
     "src/**/*.cs"
   ],
