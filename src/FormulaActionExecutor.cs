@@ -40,7 +40,12 @@ namespace Cthangover.Mods.BattleFormulas
 
         /// <inheritdoc />
         public override ChangedAttributes Execute(ActionCharacter action, Character user, Character target)
+            => Execute(action, user, target, Random.Shared);
+
+        /// <summary>Caller-owned random stream makes saved real-time contacts reproducible without changing ordinary battle callers.</summary>
+        public ChangedAttributes Execute(ActionCharacter action, Character user, Character target, Random random)
         {
+            ArgumentNullException.ThrowIfNull(random);
             if (user == null || action == null)
                 return new ChangedAttributes { Result = false };
             if (target == null || action.Type == ActionCharacterType.ToSelf)
@@ -51,11 +56,11 @@ namespace Cthangover.Mods.BattleFormulas
                 return new ChangedAttributes { Result = false };
             PayCost(action, user, true);
 
-            var amount = Math.Max(0, (int)Math.Round(Formula.Evaluate(action.GetStr("Formula"), new BattleFormulaScope(user, target)), MidpointRounding.AwayFromZero));
+            var amount = Math.Max(0, (int)Math.Round(Formula.Evaluate(action.GetStr("Formula"), new BattleFormulaScope(user, target, random)), MidpointRounding.AwayFromZero));
             var result = string.Equals(action.GetStr("Effect"), "heal", StringComparison.OrdinalIgnoreCase)
                 ? Heal(target, amount)
                 : Damage(action, user, target, amount);
-            ApplyState(action, target);
+            ApplyState(action, target, random);
             GameLogger.Log("BATTLE", $"formula action '{id}': {user.ID} -> {target.ID}, amount {amount}, damage {result.Target.Damage}", LogLevel.Debug);
             return result;
         }
@@ -106,13 +111,13 @@ namespace Cthangover.Mods.BattleFormulas
             return false;
         }
 
-        private static void ApplyState(ActionCharacter action, Character target)
+        private static void ApplyState(ActionCharacter action, Character target, Random random)
         {
             var state = action.GetStr("State");
             if (string.IsNullOrWhiteSpace(state) || target.Attributes.Health.Value <= 0)
                 return;
             var chance = action.Properties.Values.ContainsKey("StateChance") ? action.GetInt("StateChance") : 100;
-            if (Random.Shared.Next(100) >= chance)
+            if (random.Next(100) >= chance)
                 return;
             var turns = action.Properties.Values.ContainsKey("StateTurns") ? action.GetInt("StateTurns") : -1;
             StatusEffectService.Of(target).Add(state.Trim(), turns);
